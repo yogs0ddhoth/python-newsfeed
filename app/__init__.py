@@ -1,4 +1,6 @@
 from flask import Flask
+
+from app.db import init_db
 from app.routes import home, dashboard
 
 def create_app(test_config = None):
@@ -9,6 +11,8 @@ def create_app(test_config = None):
     SECRET_KEY='super_secret_key'
   )
 
+  init_db() # connect to database
+  # test route
   @app.route('/hello')
   def hello():
     return 'hello world'
