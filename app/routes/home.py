@@ -26,7 +26,7 @@ def single(id):
   post = (
     db # get single post by id
       .query(Post)
-      .filter(Post.id == id).one()
+      .filter(Post.id == id)
       .one()
   )
   return render_template('single-post.html', post=post)
