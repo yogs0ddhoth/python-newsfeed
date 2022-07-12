@@ -11,7 +11,7 @@ def create_app(test_config = None):
     SECRET_KEY='super_secret_key'
   )
 
-  init_db() # connect to database
+  init_db(app) # connect to database
   # test route
   @app.route('/hello')
   def hello():
