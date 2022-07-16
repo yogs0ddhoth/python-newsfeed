@@ -15,7 +15,7 @@ Base = declarative_base()
 def init_db(app):
   Base.metadata.create_all(engine)
 
-  app.teardown_appcontext(close_db)
+  app.teardown_appcontext(close_db) # disconnect from db when context is detroyed
 
 def get_db():
   if 'db' not in g: # if db connection does not exist
