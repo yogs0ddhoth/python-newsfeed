@@ -8,9 +8,8 @@ bp = Blueprint('home', __name__, url_prefix='/')
 @bp.route('/')
 def index():
   db = get_db() # connect to the database
-  posts = (
-    db # get all posts, order by datetime created_at
-      .query(Post)
+  posts = ( # get all posts, order by datetime created_at
+    db.query(Post)
       .order_by(Post.created_at.desc())
       .all()
   )
@@ -27,9 +26,8 @@ def login():
 @bp.route('/post/<id>')
 def single(id):
   db = get_db() # connect to the database
-  post = (
-    db # get single post by id
-      .query(Post)
+  post = ( # get single post by id
+    db.query(Post)
       .filter(Post.id == id)
       .one()
   )
