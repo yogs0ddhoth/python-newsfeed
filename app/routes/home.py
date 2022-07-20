@@ -13,8 +13,10 @@ def index():
       .order_by(Post.created_at.desc())
       .all()
   )
-  return render_template( # pass session[loggedIn] to templates
-    'homepage.html', posts=posts, loggedIn=session.get('loggedIn')
+  return render_template( # pass data to templates
+    'homepage.html', 
+    posts=posts, 
+    loggedIn=session.get('loggedIn')
   )
 
 @bp.route('/login')
@@ -31,6 +33,8 @@ def single(id):
       .filter(Post.id == id)
       .one()
   )
-  return render_template( # pass session[loggedIn] to templates
-    'single-post.html', post=post, loggedIn=session.get('loggedIn')
+  return render_template( 
+    'single-post.html', 
+    post=post, 
+    loggedIn=session.get('loggedIn')
   )
